@@ -1,0 +1,8 @@
+
+{
+	"bird": "imgs/birds.png",
+	"land": "imgs/land.png",
+	"pipeDown": "imgs/pipeDown.png",
+	"pipeUp": "imgs/pipeUp.png",
+	"sky": "imgs/sky.png"
+}

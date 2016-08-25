@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>小鸟</title>
+    <script src="js/jquery-1.12.3.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/getDatas.js"></script>
+    <script src="js/sky.js"></script>
+    <script src="js/land.js"></script>
+    <script src="js/bird.js"></script>
+    <script src="js/pipe.js"></script>
+</head>
+<body style="text-align: center;">
+<canvas id="content" width="800" height="600"></canvas>
+<script>
+    var cvs=document.getElementById("content");
+    var ctx=cvs.getContext("2d");
+
+    //游戏入口函数
+    (function main(){
+        //获取图片
+        getImgs(function (imgObj) {
+//            初始化Sky类
+            Sky.init(cvs,ctx,imgObj.sky);
+//            创建Sky实例
+            var sky1=new Sky(0,0);
+            var sky2=new Sky(cvs.width,0);
+//            初始化Land类
+            Land.init(cvs,ctx,imgObj.land);
+//            创建land实例
+            var landHeight=cvs.height-imgObj.land.height;
+            var land1=new Land(0,landHeight,2);
+            var land2=new Land(imgObj.land.width,landHeight,2);
+            var land3=new Land(imgObj.land.width*2,landHeight,2);
+            var land4=new Land(imgObj.land.width*3,landHeight,2);
+//            初始化Pipe类
+            Pipe.init(cvs,ctx,imgObj.pipeDown,imgObj.pipeUp);
+//            创建pipe实例
+            var pipe1=new Pipe(imgObj.pipeDown.width*3,120,2,0.000001);
+            var pipe2=new Pipe(imgObj.pipeDown.width*6,120,2,0.000001);
+            var pipe3=new Pipe(imgObj.pipeDown.width*9,120,2,0.000001);
+            var pipe4=new Pipe(imgObj.pipeDown.width*12,120,2,0.000001);
+            var pipe5=new Pipe(imgObj.pipeDown.width*15,120,2,0.000001);
+            var pipe6=new Pipe(imgObj.pipeDown.width*18,120,2,0.000001);
+//            初始化Bird类
+            Bird.init(cvs,ctx,imgObj.bird);
+//            创建bird实例
+            var bird=new Bird(40,100,32,24,0.2,8);
+
+            var timerId=setInterval(function () {
+                //先获得小鸟在画布上的X,Y坐标
+                var birdCvsX=bird.x+bird.w/2;
+                var birdCvsY=bird.y+bird.h/2;
+                //判断小鸟是否飞出画布，若飞出，则停止定时器
+                if(birdCvsY<bird.h/2||
+                   birdCvsY>landHeight-bird.h/2||
+                   ctx.isPointInPath(birdCvsX+6,birdCvsY)
+                ){
+                    clearInterval(timerId);
+                }
+                //先清除画布
+                ctx.clearRect(0,0,cvs.width,cvs.height);
+                //绘制天空
+                sky1.draw();
+                sky2.draw();
+                sky1.updata();
+                sky2.updata();
+                //每刷新一遍柱子，把之前的路径清楚一遍
+                ctx.beginPath();
+                //绘制柱子
+                pipe1.drawDown();
+                pipe1.drawUp();
+                pipe2.drawDown();
+                pipe2.drawUp();
+                pipe3.drawDown();
+                pipe3.drawUp();
+                pipe4.drawDown();
+                pipe4.drawUp();
+                pipe5.drawDown();
+                pipe5.drawUp();
+                pipe6.drawDown();
+                pipe6.drawUp();
+
+                pipe1.updata();
+                pipe2.updata();
+                pipe3.updata();
+                pipe4.updata();
+                pipe5.updata();
+                pipe6.updata();
+                //绘制地板
+                land1.draw();
+                land2.draw();
+                land3.draw();
+                land4.draw();
+                land1.updata();
+                land2.updata();
+                land3.updata();
+                land4.updata();
+                //绘制小鸟
+                bird.bind(3.5);
+                bird.draw();
+                bird.updata();
+
+            },1000/60);
+        })
+    }());
+</script>
+</body>
+</html>
