@@ -153,11 +153,9 @@
                 bird.bind(3.5);
                 bird.draw();
                 bird.updata();
-                console.log(touchNum);
             }
             var timerId=setInterval(start,1000/60);
             var isMoving=true;//定时器存在与否的 判断条件
-            var touchNum=0;
 //            给重新开始按钮绑定事件
             restart.addEventListener("click", function () {
                 if(!isMoving){//确定没有定时器时，才重新开始

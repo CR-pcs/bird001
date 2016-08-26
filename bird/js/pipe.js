@@ -13,7 +13,7 @@
         //加速度
         this.aSpeed=aSpeed*cvs.scaleFit;
         //先随机生成上面柱子的可视长度
-        this.downVisualY=(Math.random()*180+50)*cvs.scaleFit;
+        this.downVisualY=(Math.random()*180+80)*cvs.scaleFit;
         //计算出上下柱子的y轴坐标
         this.downY=this.downVisualY-Pipe.downImg.height;
         this.upY=this.downVisualY+space*cvs.scaleFit;
