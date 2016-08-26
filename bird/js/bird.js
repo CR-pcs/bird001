@@ -16,12 +16,12 @@
         if(!Bird.isInit){
             throw "请先初始化brid类";
         }
-        this.x=x;
-        this.y=y;
-        this.w=w;
-        this.h=h;
+        this.x=x*cvs.scaleFit;
+        this.y=y*cvs.scaleFit;
+        this.w=w*cvs.scaleFit;
+        this.h=h*cvs.scaleFit;
         //给bird添加一个向下的加速度
-        this.aSpeed=aSpeed;
+        this.aSpeed=aSpeed*cvs.scaleFit;
         //小鸟的速度
         this.speed=0;
         //翅膀
@@ -67,9 +67,6 @@
             //扇翅膀
             this.wingSta++;
             this.wingSta=this.wingSta>2*this.wingspeed?0:this.wingSta;
-
-
-            //this.wingSta=this.wingSta>2?0:this.wingSta;
             //自由落体
             this.y+=this.speed;
             this.speed+=this.aSpeed;
@@ -78,12 +75,18 @@
         bind: function (upSpeed) {
             //将this传进监听器里
             var self=this;
+            function flick(){
+                //改变初速度，让鸟向上飞
+                self.speed=-upSpeed*cvs.scaleFit;
+                this.wingSta=2*this.wingspeed;
+            }
             //添加事件监听
             cvs.addEventListener("click", function () {
-                //改变初速度，让鸟向上飞
-                self.speed=-upSpeed;
-                this.wingSta=2*this.wingspeed;
-            })
+                flick();
+            });
+            jump.addEventListener("touchstart", function () {
+                flick();
+            });
         }
 
     }

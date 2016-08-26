@@ -1,9 +1,9 @@
 /**Created by Administrator on 2016/8/11.*/
 (function(w){
-    function Sky(x,y){
+    function Sky(x,y,speed){
         this.x=x;
         this.y=y;
-        this.speed=2;
+        this.speed=speed*cvs.scaleFit;
         if(!Sky.isInit){
             throw "请先初始化Sky类";
         }
@@ -32,7 +32,7 @@
 
         draw:function () {
             //给Sky类的原型添加绘制方法draw
-            Sky.ctx.drawImage(Sky.img,this.x,this.y);
+            Sky.ctx.drawImage(Sky.img,this.x,this.y*cvs.scaleFit,Sky.imgWidth,Sky.imgHeight);
         },
 
         updata: function () {

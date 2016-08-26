@@ -9,14 +9,14 @@
         }
         this.x=x;
         //速度
-        this.speed=speed;
+        this.speed=speed*cvs.scaleFit;
         //加速度
-        this.aSpeed=aSpeed;
+        this.aSpeed=aSpeed*cvs.scaleFit;
         //先随机生成上面柱子的可视长度
-        this.downVisualY=Math.random()*200+50;
+        this.downVisualY=(Math.random()*180+50)*cvs.scaleFit;
         //计算出上下柱子的y轴坐标
         this.downY=this.downVisualY-Pipe.downImg.height;
-        this.upY=this.downVisualY+space;
+        this.upY=this.downVisualY+space*cvs.scaleFit;
     }
     Pipe.init= function (cvs,ctx,downImg,upImg) {
         Pipe.cvs=cvs;
@@ -30,12 +30,12 @@
     Pipe.prototype={
         constructor:Pipe,
         drawDown: function () {
-            Pipe.ctx.drawImage(Pipe.downImg,this.x,this.downY);
+            Pipe.ctx.drawImage(Pipe.downImg,this.x,this.downY,Pipe.downImg.width,Pipe.downImg.height);
             //绘制虚拟的方形
             Pipe.ctx.rect(this.x,this.downY,Pipe.downImg.width,Pipe.downImg.height);
         },
         drawUp: function () {
-            Pipe.ctx.drawImage(Pipe.upImg,this.x,this.upY);
+            Pipe.ctx.drawImage(Pipe.upImg,this.x,this.upY,Pipe.upImg.width,Pipe.upImg.height);
             //绘制虚拟的方形
             Pipe.ctx.rect(this.x,this.upY,Pipe.upImg.width,Pipe.upImg.height);
         },

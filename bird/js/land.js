@@ -9,7 +9,7 @@
         }
         this.x=x;
         this.y=y;
-        this.speed=speed;
+        this.speed=speed*cvs.scaleFit;
         //记录下图片的起始位置
         this.startX=x;
     }
