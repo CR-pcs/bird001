@@ -1,7 +1,4 @@
-/**
- * Created by Administrator on 2016/8/12.
- */
-(function(w){
+define(function (require,exports,module) {
     //创建一个pipe对象
     function Pipe(x,space,speed,aSpeed){
         if(!Pipe.isInit){
@@ -47,5 +44,5 @@
             }
         }
     }
-    w.Pipe=Pipe;
-}(window));
+    module.exports=Pipe;
+});

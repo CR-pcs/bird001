@@ -1,5 +1,4 @@
-/**Created by Administrator on 2016/8/11.*/
-(function(w){
+define(function (require,exports,module) {
     function Sky(x,y,speed){
         this.x=x;
         this.y=y;
@@ -46,7 +45,6 @@
             }
         }
     }
-
     //将Sky对象暴露到全局
-    w.Sky=Sky;
-}(window));
+    module.exports=Sky;
+});

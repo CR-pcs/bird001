@@ -1,8 +1,4 @@
-/**
- * Created by Administrator on 2016/8/11.
- */
-
-(function(w){
+define(function (require,exports,module) {
     var imgObj={},key,img,Cb;
     var num=0;
     $.ajax({
@@ -30,7 +26,10 @@
             Cb(imgObj);
         }
     }
-    w.getImgs= function (fn) {
+    module.exports= function (fn) {
         Cb=fn;
-    };
-}(window));
+    }
+    //w.getImgs= function (fn) {
+    //    Cb=fn;
+    //};
+});
