@@ -39,12 +39,12 @@ define(function (require,exports,module) {
 //            初始化Pipe类
             Pipe.init(cvs,ctx,imgObj.pipeDown,imgObj.pipeUp);
 //            创建pipe实例
-            var pipe1=new Pipe(imgObj.pipeDown.width*3,120,2,0.000001);
-            var pipe2=new Pipe(imgObj.pipeDown.width*6,120,2,0.000001);
-            var pipe3=new Pipe(imgObj.pipeDown.width*9,120,2,0.000001);
-            var pipe4=new Pipe(imgObj.pipeDown.width*12,120,2,0.000001);
-            var pipe5=new Pipe(imgObj.pipeDown.width*15,120,2,0.000001);
-            var pipe6=new Pipe(imgObj.pipeDown.width*18,120,2,0.000001);
+            var pipe1=new Pipe(imgObj.pipeDown.width*3,120,2,0.0002);
+            var pipe2=new Pipe(imgObj.pipeDown.width*6,120,2,0.0002);
+            var pipe3=new Pipe(imgObj.pipeDown.width*9,120,2,0.0002);
+            var pipe4=new Pipe(imgObj.pipeDown.width*12,120,2,0.0002);
+            var pipe5=new Pipe(imgObj.pipeDown.width*15,120,2,0.0002);
+            var pipe6=new Pipe(imgObj.pipeDown.width*18,120,2,0.0002);
 //            初始化Bird类
             Bird.init(cvs,ctx,imgObj.bird);
 //            创建bird实例
@@ -125,6 +125,7 @@ define(function (require,exports,module) {
 //                    清除之前的路径
                     ctx.beginPath();
                     timerId=setInterval(start,1000/60);
+                    isMoving=true;
                 }
             });
         })
