@@ -1,7 +1,4 @@
-/**
- * Created by Administrator on 2016/8/12.
- */
-(function(w){
+define(function (require,exports,module) {
     //创建一个pipe对象
     function Pipe(x,space,speed,aSpeed){
         if(!Pipe.isInit){
@@ -13,7 +10,7 @@
         //加速度
         this.aSpeed=aSpeed*cvs.scaleFit;
         //先随机生成上面柱子的可视长度
-        this.downVisualY=(Math.random()*180+50)*cvs.scaleFit;
+        this.downVisualY=(Math.random()*180+80)*cvs.scaleFit;
         //计算出上下柱子的y轴坐标
         this.downY=this.downVisualY-Pipe.downImg.height;
         this.upY=this.downVisualY+space*cvs.scaleFit;
@@ -47,5 +44,5 @@
             }
         }
     }
-    w.Pipe=Pipe;
-}(window));
+    module.exports=Pipe;
+});

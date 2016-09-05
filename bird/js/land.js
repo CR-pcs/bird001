@@ -1,8 +1,4 @@
-/**
- * Created by Administrator on 2016/8/12.
- */
-(function(w){
-
+define(function (require,exports,module) {
     function Land(x,y,speed){
         if(!Land.isInit){
             throw "请先初始化Land";
@@ -33,5 +29,5 @@
             }
         }
     }
- w.Land=Land;
-}(window));
+    module.exports=Land;
+});

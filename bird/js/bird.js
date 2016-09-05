@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/8/11.
- */
 
     //先想好，这个bird我们要用来做什么，从而决定添加什么属性和方法
     //0、确定是在canvas的运行环境中（先初始化） (bird)
@@ -10,7 +7,7 @@
     //4、上升下降时，头方向改变 (bird.prototype)
     //5、判断触底与触顶，停止定时器 ()
 
-(function(win){
+define(function (require,exports,module) {
     //新建一个bird对象
     function Bird(x,y,w,h,aSpeed,wingspeed){
         if(!Bird.isInit){
@@ -88,12 +85,11 @@
                 flick();
             });
         }
-
     }
 
     //将bird对象暴露到全局中
-    win.Bird=Bird;
-}(window));
+    module.exports=Bird;
+});
 
 
 

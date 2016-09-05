@@ -1,8 +1,8 @@
-/**Created by Administrator on 2016/8/11.*/
-(function(w){
+define(function (require,exports,module) {
     function Sky(x,y,speed){
         this.x=x;
         this.y=y;
+        this.startX=x;
         this.speed=speed*cvs.scaleFit;
         if(!Sky.isInit){
             throw "请先初始化Sky类";
@@ -39,13 +39,12 @@
             this.x-=this.speed;
             //当第一张图快移动结束的时候，瞬间切换回起点
             if(this.x<=-Sky.imgWidth){
-                this.x=+Sky.imgWidth;
+                this.x=+Sky.imgWidth*2-6;
                 //如果把this.x设为0的话，第二张图片会跟第一张瞬间重叠
                 //因此这里用加法
             }
         }
     }
-
     //将Sky对象暴露到全局
-    w.Sky=Sky;
-}(window));
+    module.exports=Sky;
+});
